@@ -14,6 +14,12 @@ const Stopwatch = () => {
     }
   };
 
+  const handleStop = () => {
+    if (isActive) {
+      setIsActive(false);
+      clearInterval(intervalRef.current);
+    }
+  };
 
   const handleReset = () => {
     setIsActive(false);
@@ -26,6 +32,7 @@ const Stopwatch = () => {
       <h1>Stopwatch</h1>
       <div>{new Date(time * 1000).toISOString().substr(11, 8)}</div>
       <button onClick={handleStart}>Start</button>
+      <button onClick={handleStop}>Stop</button>
       <button onClick={handleReset}>Reset</button>
     </div>
   );
